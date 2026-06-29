@@ -1,0 +1,65 @@
+=== BƯỚC 1: LOAD DỮ LIỆU ĐÃ TIỀN XỬ LÝ ===
+Kích thước tập Train: (242, 18)
+Kích thước tập Test : (61, 18)
+
+=== BƯỚC 2: HUẤN LUYỆN MÔ HÌNH BASELINE ===
+--- ĐÁNH GIÁ MÔ HÌNH: Baseline Tree (max_depth=5) ---
+Accuracy : 0.7541
+Precision: 0.7250
+Recall   : 0.8788
+F1-score : 0.7945
+
+Classification Report:
+              precision    recall  f1-score   support
+
+  No Disease       0.81      0.61      0.69        28
+     Disease       0.72      0.88      0.79        33
+
+    accuracy                           0.75        61
+   macro avg       0.77      0.74      0.74        61
+weighted avg       0.76      0.75      0.75        61
+
+----------------------------------------
+=== BƯỚC 3: QUÉT CHIỀU SÂU CÂY (DEPTH SWEEP) ===
+Chiều sâu tối ưu tự động chọn (Phương án A): 4
+Depth:  1 | Train Acc: 0.7851 | Test Acc: 0.6885
+Depth:  2 | Train Acc: 0.7851 | Test Acc: 0.6885
+Depth:  3 | Train Acc: 0.8595 | Test Acc: 0.7049
+Depth:  4 | Train Acc: 0.8967 | Test Acc: 0.7541
+Depth:  5 | Train Acc: 0.9380 | Test Acc: 0.7541
+Depth:  6 | Train Acc: 0.9711 | Test Acc: 0.7377
+Depth:  7 | Train Acc: 0.9752 | Test Acc: 0.7541
+Depth:  8 | Train Acc: 0.9917 | Test Acc: 0.7049
+Depth:  9 | Train Acc: 0.9959 | Test Acc: 0.7377
+Depth: 10 | Train Acc: 1.0000 | Test Acc: 0.6885
+
+Đã lưu biểu đồ Overfitting tại: results\figures\depth_vs_accuracy.png
+
+=== BƯỚC 4: TỐI ƯU SIÊU THAM SỐ BẰNG GRIDSEARCHCV ===
+Các siêu tham số tốt nhất:
+{'max_depth': 3, 'min_samples_leaf': 10, 'min_samples_split': 2}
+Độ chính xác Cross-Validation tốt nhất: 0.8060
+
+--- ĐÁNH GIÁ MÔ HÌNH: Tuned Tree (GridSearchCV) ---
+Accuracy : 0.7049
+Precision: 0.7027
+Recall   : 0.7879
+F1-score : 0.7429
+
+Classification Report:
+              precision    recall  f1-score   support
+
+  No Disease       0.71      0.61      0.65        28
+     Disease       0.70      0.79      0.74        33
+
+    accuracy                           0.70        61
+   macro avg       0.71      0.70      0.70        61
+weighted avg       0.71      0.70      0.70        61
+
+----------------------------------------
+=== BƯỚC 5: XUẤT CÁC BIỂU ĐỒ BÁO CÁO CỦA MÔ HÌNH TỐI ƯU ===
+Đã lưu ma trận nhầm lẫn tại: results\figures\confusion_matrix_dt.png
+Đã lưu biểu đồ Feature Importance tại: results\figures\feature_importance.png
+Đã lưu sơ đồ cây quyết định tại: results\figures\decision_tree.png
+
+Quá trình xử lý và lưu kết quả hoàn tất thành công!
