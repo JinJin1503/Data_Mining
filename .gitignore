@@ -1,0 +1,23 @@
+# Python Virtual Environment
+venv/
+.venv/
+env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# IDE files
+.vscode/
+.idea/
+
+# Word temp files
+~$*.docx
+
+# Reports
+reports/chuong_3.md
+
